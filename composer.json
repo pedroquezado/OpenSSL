@@ -1,0 +1,21 @@
+{
+	"name": "pedroquezado/openssl",
+	"authors": [
+		{
+			"name": "Pedro Quezado",
+			"email": "juli987.lp@gmail.com",
+			"homepage": "https://github.com/pedroquezado",
+			"role": "Developer"
+		}
+	],
+	"type": "library",
+	"license": "MIT",
+	"require": {
+		"php": "^7.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"OpenSSL\\": "openssl\\src" 
+		}
+	}
+}
