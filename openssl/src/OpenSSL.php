@@ -1,7 +1,5 @@
 <?php 
 
-	namespace OpenSSL;
-
 	class OpenSSL {
 
 		private $data;
@@ -26,6 +24,22 @@
 		public function getSecret() { return $this->secret; }
 		public function getSecretIV() { return $this->secret_iv; }
 
+		public static function replace($value) {
+			$value = str_replace(" ", "+", $value);
+			return $value;
+		}
+
+		public static function base64($value, $type = "encode") {
+			switch ($type) {
+				case 'encode':
+					return base64_encode($value);
+					break;
+				case 'decode':
+					return base64_decode($value);
+					break;
+			}
+		}
+
 		public static function encode($value, $pack = "a16::senha") {
 			$ssl = new OpenSSL($value, $pack);
 
@@ -37,10 +51,15 @@
 				$ssl->getSecretIV()
 			);
 
+			$encode = OpenSSL::base64($encode);
+
 			return $encode;
 		}
 
 		public static function decode($value, $pack = "a16::senha") {
+			$value = OpenSSL::replace($value);
+			$value = OpenSSL::base64($value, 'decode');
+			
 			$ssl = new OpenSSL($value, $pack);
 
 			$decode = openssl_decrypt(
