@@ -6,7 +6,7 @@
 		private $secret;
 		private $secret_iv;
 
-		function __construct($data, $pack = "a16::senha") {
+		function __construct($data, $pack = "a16::GQS2NTJZe6fBpOAupyS05SpiFD") {
 
 			$ext = function($value) {
 				$value = explode('::', $value);
@@ -40,7 +40,7 @@
 			}
 		}
 
-		public static function encode($value, $pack = "a16::senha") {
+		public static function encode($value, $pack = "a16::GQS2NTJZe6fBpOAupyS05SpiFD") {
 			$ssl = new OpenSSL($value, $pack);
 
 			$encode = openssl_encrypt(
@@ -56,7 +56,7 @@
 			return $encode;
 		}
 
-		public static function decode($value, $pack = "a16::senha") {
+		public static function decode($value, $pack = "a16::GQS2NTJZe6fBpOAupyS05SpiFD") {
 			$value = OpenSSL::replace($value);
 			$value = OpenSSL::base64($value, 'decode');
 			
