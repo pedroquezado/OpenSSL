@@ -1,5 +1,7 @@
 <?php 
 
+	namespace OpenSSL;
+
 	class OpenSSL {
 
 		private $data;
