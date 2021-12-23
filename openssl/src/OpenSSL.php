@@ -22,16 +22,16 @@
 			$this->data = $data;
 		}
 
-		public function getData() { return $this->data; }
-		public function getSecret() { return $this->secret; }
-		public function getSecretIV() { return $this->secret_iv; }
+		private function getData() { return $this->data; }
+		private function getSecret() { return $this->secret; }
+		private function getSecretIV() { return $this->secret_iv; }
 
-		public static function replace($value) {
+		private static function replace($value) {
 			$value = str_replace(" ", "+", $value);
 			return $value;
 		}
 
-		public static function base64($value, $type = "encode") {
+		private static function base64($value, $type = "encode") {
 			switch ($type) {
 				case 'encode':
 					return base64_encode($value);
